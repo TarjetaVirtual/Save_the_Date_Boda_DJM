@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +15,7 @@
 
     <style>
         /* ==============================
-            CONFIGURACIÓN GENERAL
+           CONFIGURACIÓN GENERAL
         ============================== */
 
         * {
@@ -27,50 +28,45 @@
         body {
             width: 100%;
             height: 100%;
-            /* Permitir scroll vertical si el contenido excede la pantalla en dispositivos estrechos/altos como Samsung J6+ */
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
             background: #24231f;
             font-family: 'Montserrat', sans-serif;
             -webkit-tap-highlight-color: transparent;
-            -webkit-overflow-scrolling: touch;
         }
 
         body {
-            min-height: 100vh;
-            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
         }
 
         /* ==============================
-            INVITACIÓN RESPONSIVA
+           INVITACIÓN RESPONSIVA
         ============================== */
 
         .invitacion {
             position: relative;
             width: 100%;
             max-width: 500px;
-            min-height: 100vh;
-            min-height: 100dvh;
+
+            height: 100vh;
+            height: 100dvh;
+
             margin: 0 auto;
             overflow: hidden;
             isolation: isolate;
             background: #55534e;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         /* FOTOGRAFÍA DE FONDO */
 
         .foto-fondo {
-            position: fixed;
+            position: absolute;
             inset: 0;
             z-index: -2;
 
             width: 100%;
-            height: 100vh;
-            height: 100dvh;
+            height: 100%;
 
             object-fit: cover;
             object-position: center center;
@@ -106,7 +102,7 @@
         }
 
         /* ==============================
-            SAVE THE DATE Y NOMBRES
+           SAVE THE DATE Y NOMBRES
         ============================== */
 
         .contenido {
@@ -125,16 +121,16 @@
             transform: translateY(-50%);
         }
 
-        .img-save {
-            display: block;
-            width: min(48%, 190px);
-            max-height: 13dvh;
-            height: auto;
-            object-fit: contain;
-            margin-bottom: 12px;
-            transform: translateY(22px);
-            filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
-        }
+       .img-save {
+    display: block;
+    width: min(48%, 190px);
+    max-height: 13dvh;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 12px;
+    transform: translateY(22px);
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+}
 
         .img-nombres {
             display: block;
@@ -164,14 +160,14 @@
         }
 
         /* ==============================
-            FECHA DE LA BODA
+           FECHA DE LA BODA
         ============================== */
 
         .fecha {
             position: absolute;
             left: 0;
 
-            /* Reserva espacio inferior adaptable con soporte para pantallas alargadas */
+            /* Reserva espacio inferior */
             bottom: calc(7% + env(safe-area-inset-bottom, 0px));
 
             width: 100%;
@@ -195,7 +191,7 @@
         }
 
         /* ==============================
-            BOTÓN DE MÚSICA
+           BOTÓN DE MÚSICA
         ============================== */
 
         .boton-musica {
@@ -246,23 +242,18 @@
         }
 
         /* ==============================
-            CELULARES DE ALTURA REDUCIDA O ALARGADOS (18.5:9 / Samsung J6+)
+           CELULARES DE ALTURA REDUCIDA
         ============================== */
 
-        @media (max-height: 750px) {
-            .invitacion {
-                /* Asegurar altura mínima para permitir scroll natural en pantallas alargadas si el contenido lo requiere */
-                min-height: 720px;
-            }
-
+        @media (max-height: 700px) {
             .contenido {
-                top: 41%;
+                top: 40%;
             }
 
             .img-save {
                 width: min(42%, 150px);
                 max-height: 11dvh;
-                margin-bottom: 8px;
+                margin-bottom: 5px;
             }
 
             .img-nombres {
@@ -281,7 +272,7 @@
         }
 
         /* ==============================
-            CELULARES ESTRECHOS
+           CELULARES ESTRECHOS
         ============================== */
 
         @media (max-width: 360px) {
@@ -310,14 +301,10 @@
         }
 
         /* ==============================
-            PANTALLAS MUY BAJAS
+           PANTALLAS MUY BAJAS
         ============================== */
 
         @media (max-height: 550px) {
-            .invitacion {
-                min-height: 550px;
-            }
-
             .contenido {
                 top: 38%;
             }
@@ -370,7 +357,6 @@
             alt="Fotografía de Doménica y José Miguel"
             class="foto-fondo"
             fetchpriority="high"
-            onerror="this.src='https://placehold.co/600x1200/55534e/ffffff?text=Dom%C3%A9nica+y+Jos%C3%A9+Miguel'"
         >
 
         <!-- SAVE THE DATE Y NOMBRES -->
@@ -380,7 +366,6 @@
                 src="save.png"
                 alt="Save the Date"
                 class="img-save"
-                onerror="this.src='https://placehold.co/300x100/transparent/ffffff?text=Save+the+Date'"
             >
 
             <h1 class="texto-accesible">
@@ -391,7 +376,6 @@
                 src="nombres.png"
                 alt="Doménica y José Miguel"
                 class="img-nombres"
-                onerror="this.src='https://placehold.co/400x200/transparent/ffffff?text=Dom%C3%A9nica+y+Jos%C3%A9+Miguel'"
             >
 
         </section>
@@ -403,7 +387,6 @@
                 src="fecha.png"
                 alt="19 de junio de 2027"
                 class="img-fecha"
-                onerror="this.src='https://placehold.co/300x80/transparent/ffffff?text=19+de+junio+de+2027'"
             >
 
         </section>
