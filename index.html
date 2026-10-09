@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#24231f">
 
     <title>Save the Date | Doménica y José Miguel</title>
 
-    <!-- TIPOGRAFÍA DE RESPALDO/INTERFACE -->
+    <!-- TIPOGRAFÍA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
@@ -33,16 +34,23 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        body {
+            height: 100vh;
+            height: 100dvh;
+        }
+
         /* ==============================
-           INVITACIÓN A PANTALLA COMPLETA
+           INVITACIÓN RESPONSIVA
         ============================== */
 
         .invitacion {
             position: relative;
             width: 100%;
+            max-width: 500px;
+
             height: 100vh;
             height: 100dvh;
-            max-width: 500px; /* Mantiene formato vertical móvil en PC */
+
             margin: 0 auto;
             overflow: hidden;
             isolation: isolate;
@@ -64,7 +72,7 @@
             object-position: center center;
         }
 
-        /* OSCURECIMIENTO SUAVE Y DEGRADADO */
+        /* OSCURECIMIENTO */
 
         .invitacion::before {
             content: "";
@@ -73,7 +81,6 @@
             z-index: -1;
 
             background: rgba(20, 18, 15, 0.25);
-
             pointer-events: none;
         }
 
@@ -86,7 +93,7 @@
             background: linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 0.10) 0%,
-                rgba(0, 0, 0, 0.00) 30%,
+                rgba(0, 0, 0, 0) 30%,
                 rgba(0, 0, 0, 0.05) 60%,
                 rgba(0, 0, 0, 0.35) 100%
             );
@@ -95,16 +102,16 @@
         }
 
         /* ==============================
-           SECCIÓN CENTRAL (SAVE THE DATE + NOMBRES)
+           SAVE THE DATE Y NOMBRES
         ============================== */
 
         .contenido {
             position: absolute;
-            top: 45%;
+            top: 43%;
             left: 0;
 
             width: 100%;
-            padding: 0 20px;
+            padding: 0 12px;
 
             display: flex;
             flex-direction: column;
@@ -114,135 +121,223 @@
             transform: translateY(-50%);
         }
 
-        /* IMAGEN SAVE THE DATE */
-
-      .img-save {
-    width: 55%;
-    max-width: 220px;
-    height: auto;
-    margin-bottom: 12px;
+       .img-save {
     display: block;
-    transform: translateY(22px); /* <--- Desplaza la imagen hacia abajo */
+    width: min(48%, 190px);
+    max-height: 13dvh;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 12px;
+    transform: translateY(22px);
     filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
 }
 
-        /* IMAGEN NOMBRES */
-
         .img-nombres {
-            width: 98%;
-            max-width: 420px;
-            height: auto;
             display: block;
+
+            width: 96%;
+            max-width: 420px;
+            max-height: 29dvh;
+            height: auto;
+
+            object-fit: contain;
+
             filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
         }
 
+        /* TEXTO ACCESIBLE */
+
+        .texto-accesible {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* ==============================
-           FECHA INFERIOR
+           FECHA DE LA BODA
         ============================== */
 
         .fecha {
             position: absolute;
-            bottom: 6%;
             left: 0;
 
+            /* Reserva espacio inferior */
+            bottom: calc(7% + env(safe-area-inset-bottom, 0px));
+
             width: 100%;
-            padding: 0 20px;
+            padding: 0 16px;
 
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* IMAGEN FECHA COMPLETA */
-
         .img-fecha {
-            width: 78%;
-            max-width: 340px;
-            height: auto;
             display: block;
+
+            width: min(72%, 300px);
+            max-height: 12dvh;
+            height: auto;
+
+            object-fit: contain;
+
             filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
         }
 
         /* ==============================
-           BOTÓN CIRCULAR DE MÚSICA
+           BOTÓN DE MÚSICA
         ============================== */
 
-/* BOTÓN DE MÚSICA MUY PEQUEÑO */
+        .boton-musica {
+            position: absolute;
+            right: 12px;
+            bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+            z-index: 5;
 
-.boton-musica {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    z-index: 5;
+            width: 30px;
+            height: 30px;
+            padding: 0;
 
-    width: 20px;
-    height: 20px;
-    padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
 
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    border-radius: 50%;
+            background: rgba(30, 30, 28, 0.45);
+            color: #ffffff;
 
-    background: rgba(30, 30, 28, 0.35);
-    color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 300;
 
-    font-family: 'Montserrat', sans-serif;
-    font-size: 8px;
-    font-weight: 300;
+            cursor: pointer;
 
-    cursor: pointer;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
 
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
 
-    transition: background 0.3s ease, transform 0.3s ease;
-}
+        .boton-musica:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.06);
+        }
 
-.boton-musica:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.06);
-}
+        .boton-musica:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
 
-.boton-musica:focus-visible {
-    outline: 2px solid #ffffff;
-    outline-offset: 2px;
-}
-
-#iconoMusica {
-    display: block;
-    line-height: 1;
-}
-
+        #iconoMusica {
+            display: block;
+            line-height: 1;
+        }
 
         /* ==============================
-           AJUSTES RESPONSIVOS
+           CELULARES DE ALTURA REDUCIDA
+        ============================== */
+
+        @media (max-height: 700px) {
+            .contenido {
+                top: 40%;
+            }
+
+            .img-save {
+                width: min(42%, 150px);
+                max-height: 11dvh;
+                margin-bottom: 5px;
+            }
+
+            .img-nombres {
+                width: 88%;
+                max-height: 25dvh;
+            }
+
+            .fecha {
+                bottom: calc(6% + env(safe-area-inset-bottom, 0px));
+            }
+
+            .img-fecha {
+                width: min(65%, 250px);
+                max-height: 10dvh;
+            }
+        }
+
+        /* ==============================
+           CELULARES ESTRECHOS
+        ============================== */
+
+        @media (max-width: 360px) {
+            .contenido {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .img-save {
+                width: min(48%, 150px);
+            }
+
+            .img-nombres {
+                width: 94%;
+            }
+
+            .fecha {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .img-fecha {
+                width: 72%;
+                max-height: 9dvh;
+            }
+        }
+
+        /* ==============================
+           PANTALLAS MUY BAJAS
         ============================== */
 
         @media (max-height: 550px) {
             .contenido {
-                top: 42%;
-            }
-
-            .fecha {
-                bottom: 4%;
+                top: 38%;
             }
 
             .img-save {
-                width: 45%;
-                margin-bottom: 8px;
+                width: min(35%, 120px);
+                max-height: 9dvh;
+                margin-bottom: 3px;
             }
 
             .img-nombres {
-                width: 75%;
+                width: 78%;
+                max-height: 22dvh;
+            }
+
+            .fecha {
+                bottom: calc(5% + env(safe-area-inset-bottom, 0px));
             }
 
             .img-fecha {
-                width: 65%;
+                width: min(55%, 220px);
+                max-height: 8dvh;
+            }
+
+            .boton-musica {
+                width: 26px;
+                height: 26px;
+                right: 8px;
+                bottom: calc(8px + env(safe-area-inset-bottom, 0px));
             }
         }
+
+        /* RESPETAR PREFERENCIAS DE MOVIMIENTO */
 
         @media (prefers-reduced-motion: reduce) {
             .boton-musica {
@@ -256,35 +351,44 @@
 
     <main class="invitacion">
 
-        <!-- FOTO PRINCIPAL DE FONDO -->
+        <!-- FOTOGRAFÍA PRINCIPAL -->
         <img
             src="WhatsApp Image 2026-10-09 at 15.53.50.jpeg"
             alt="Fotografía de Doménica y José Miguel"
             class="foto-fondo"
+            fetchpriority="high"
         >
 
-        <!-- NOMBRES Y TITULAR EN PNG VECTORIAL -->
-        <section class="contenido">
-            <img 
-                src="save.png" 
-                alt="Save the Date" 
+        <!-- SAVE THE DATE Y NOMBRES -->
+        <section class="contenido" aria-label="Invitación de boda">
+
+            <img
+                src="save.png"
+                alt="Save the Date"
                 class="img-save"
             >
-            <h1 style="font-size:0; line-height:0; margin:0;">Doménica y José Miguel</h1>
-            <img 
-                src="nombres.png" 
-                alt="Doménica y José Miguel" 
+
+            <h1 class="texto-accesible">
+                Doménica y José Miguel
+            </h1>
+
+            <img
+                src="nombres.png"
+                alt="Doménica y José Miguel"
                 class="img-nombres"
             >
+
         </section>
 
-        <!-- FECHA EN PNG VECTORIAL -->
-        <section class="fecha">
-            <img 
-                src="fecha.png" 
-                alt="19 de junio de 2027" 
+        <!-- FECHA -->
+        <section class="fecha" aria-label="Fecha de la boda">
+
+            <img
+                src="fecha.png"
+                alt="19 de junio de 2027"
                 class="img-fecha"
             >
+
         </section>
 
         <!-- BOTÓN DE MÚSICA -->
@@ -299,7 +403,7 @@
             <span id="iconoMusica" aria-hidden="true">♫</span>
         </button>
 
-        <!-- ARCHIVO DE AUDIO -->
+        <!-- AUDIO -->
         <audio
             id="musica"
             src="musica.mp3"
@@ -339,7 +443,10 @@
                     actualizarBoton(true);
                 } catch (error) {
                     actualizarBoton(false);
-                    console.error('No se pudo reproducir la música.', error);
+                    console.error(
+                        'No se pudo reproducir la música.',
+                        error
+                    );
                 }
             } else {
                 musica.pause();
