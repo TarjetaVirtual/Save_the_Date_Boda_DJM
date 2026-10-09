@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#24231f">
+
+    <title>Save the Date | Doménica y José Miguel</title>
+
+    <!-- TIPOGRAFÍA DE RESPALDO/INTERFACE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==============================
+           CONFIGURACIÓN GENERAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #24231f;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ==============================
+           INVITACIÓN A PANTALLA COMPLETA
+        ============================== */
+
+        .invitacion {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            max-width: 500px; /* Mantiene formato vertical móvil en PC */
+            margin: 0 auto;
+            overflow: hidden;
+            isolation: isolate;
+            background: #55534e;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* FOTOGRAFÍA DE FONDO */
+
+        .foto-fondo {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        /* OSCURECIMIENTO SUAVE Y DEGRADADO */
+
+        .invitacion::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: rgba(20, 18, 15, 0.25);
+
+            pointer-events: none;
+        }
+
+        .invitacion::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.10) 0%,
+                rgba(0, 0, 0, 0.00) 30%,
+                rgba(0, 0, 0, 0.05) 60%,
+                rgba(0, 0, 0, 0.35) 100%
+            );
+
+            pointer-events: none;
+        }
+
+        /* ==============================
+           SECCIÓN CENTRAL (SAVE THE DATE + NOMBRES)
+        ============================== */
+
+        .contenido {
+            position: absolute;
+            top: 45%;
+            left: 0;
+
+            width: 100%;
+            padding: 0 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            transform: translateY(-50%);
+        }
+
+        /* IMAGEN SAVE THE DATE */
+
+        .img-save {
+            width: 55%;
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 12px;
+            display: block;
+            filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* IMAGEN NOMBRES */
+
+        .img-nombres {
+            width: 88%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* ==============================
+           FECHA INFERIOR
+        ============================== */
+
+        .fecha {
+            position: absolute;
+            bottom: 6%;
+            left: 0;
+
+            width: 100%;
+            padding: 0 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* IMAGEN FECHA COMPLETA */
+
+        .img-fecha {
+            width: 78%;
+            max-width: 340px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+        }
+
+        /* ==============================
+           BOTÓN CIRCULAR DE MÚSICA
+        ============================== */
+
+/* BOTÓN DE MÚSICA MUY PEQUEÑO */
+
+.boton-musica {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 5;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+
+    background: rgba(30, 30, 28, 0.35);
+    color: #ffffff;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-weight: 300;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.boton-musica:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.06);
+}
+
+.boton-musica:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+#iconoMusica {
+    display: block;
+    line-height: 1;
+}
+
+
+        /* ==============================
+           AJUSTES RESPONSIVOS
+        ============================== */
+
+        @media (max-height: 550px) {
+            .contenido {
+                top: 42%;
+            }
+
+            .fecha {
+                bottom: 4%;
+            }
+
+            .img-save {
+                width: 45%;
+                margin-bottom: 8px;
+            }
+
+            .img-nombres {
+                width: 75%;
+            }
+
+            .img-fecha {
+                width: 65%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .boton-musica {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="invitacion">
+
+        <!-- FOTO PRINCIPAL DE FONDO -->
+        <img
+            src="WhatsApp Image 2026-10-09 at 15.53.50.jpeg"
+            alt="Fotografía de Doménica y José Miguel"
+            class="foto-fondo"
+        >
+
+        <!-- NOMBRES Y TITULAR EN PNG VECTORIAL -->
+        <section class="contenido">
+            <img 
+                src="save.png" 
+                alt="Save the Date" 
+                class="img-save"
+            >
+            <h1 style="font-size:0; line-height:0; margin:0;">Doménica y José Miguel</h1>
+            <img 
+                src="nombres.png" 
+                alt="Doménica y José Miguel" 
+                class="img-nombres"
+            >
+        </section>
+
+        <!-- FECHA EN PNG VECTORIAL -->
+        <section class="fecha">
+            <img 
+                src="fecha.png" 
+                alt="19 de junio de 2027" 
+                class="img-fecha"
+            >
+        </section>
+
+        <!-- BOTÓN DE MÚSICA -->
+        <button
+            type="button"
+            class="boton-musica"
+            id="botonMusica"
+            aria-label="Reproducir música"
+            aria-pressed="false"
+            title="Reproducir música"
+        >
+            <span id="iconoMusica" aria-hidden="true">♫</span>
+        </button>
+
+        <!-- ARCHIVO DE AUDIO -->
+        <audio
+            id="musica"
+            src="musica.mp3"
+            loop
+            preload="none"
+        ></audio>
+
+    </main>
+
+    <script>
+        // ==============================
+        // CONTROL DE MÚSICA
+        // ==============================
+
+        const botonMusica = document.getElementById('botonMusica');
+        const iconoMusica = document.getElementById('iconoMusica');
+        const musica = document.getElementById('musica');
+
+        function actualizarBoton(reproduciendo) {
+            if (reproduciendo) {
+                iconoMusica.textContent = 'Ⅱ';
+                botonMusica.setAttribute('aria-label', 'Pausar música');
+                botonMusica.setAttribute('aria-pressed', 'true');
+                botonMusica.title = 'Pausar música';
+            } else {
+                iconoMusica.textContent = '♫';
+                botonMusica.setAttribute('aria-label', 'Reproducir música');
+                botonMusica.setAttribute('aria-pressed', 'false');
+                botonMusica.title = 'Reproducir música';
+            }
+        }
+
+        botonMusica.addEventListener('click', async () => {
+            if (musica.paused) {
+                try {
+                    await musica.play();
+                    actualizarBoton(true);
+                } catch (error) {
+                    actualizarBoton(false);
+                    console.error('No se pudo reproducir la música.', error);
+                }
+            } else {
+                musica.pause();
+                actualizarBoton(false);
+            }
+        });
+
+        musica.addEventListener('play', () => actualizarBoton(true));
+        musica.addEventListener('pause', () => actualizarBoton(false));
+        musica.addEventListener('ended', () => actualizarBoton(false));
+    </script>
+
+</body>
+</html>
